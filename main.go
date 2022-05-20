@@ -4,21 +4,9 @@ import (
 	"flag"
 	"fmt"
 	"math/big"
-	"strconv"
 )
 
 var convertErrItem = AlfredItem{Title: "转换错误", Subtitle: "检查要转换的数"}
-
-// 将 from 进制转换为 to 进制
-func aryConvert(fromStr string, from, to int) (string, error) {
-	// 先将 from 进制数转成十进制数
-	decimalNumeral, err := strconv.ParseInt(fromStr, from, 64)
-	if err != nil {
-		return "", err
-	}
-	// 将十进制数转成 to 进制
-	return strconv.FormatInt(decimalNumeral, to), nil
-}
 
 func has0xPrefix(input string) bool {
 	return len(input) >= 2 && input[0] == '0' && (input[1] == 'x' || input[1] == 'X')
